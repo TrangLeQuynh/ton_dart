@@ -11,7 +11,8 @@ void main() async {
 
   final minter = JettonMinter.create(
       owner: ownerWallet,
-      metadata: const JettonOffChainMetadata("https://github.com/mrtnetwork"));
+      // metadata: const JettonOffChainMetadata("https://github.com/mrtnetwork")
+  );
   await minter.deploy(
       ownerPrivateKey: privateKey, rpc: rpc, amount: TonHelper.toNano("0.5"));
 

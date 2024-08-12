@@ -40,6 +40,11 @@ class VersionedWalletUtils {
         seqno: seqno,
       );
     } catch (e) {
+      return VersionedWalletAccountPrams(
+        subwallet: null,
+        publicKey: [],
+        seqno: 0,
+      );
       throw MessageException("Invalid ${type.name} state account data.");
     }
   }

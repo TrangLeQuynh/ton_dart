@@ -71,9 +71,9 @@ mixin VerionedProviderImpl on VersionedWalletTransactionImpl {
       bool bounced = false,
       Cell? body}) async {
     final stateData = await readState(rpc);
-
     if (stateData.seqno != 0) {
-      throw TonContractException("Account is already active.");
+      // throw TonContractException("Account is already active.");
+      return 'Account is already active.';
     }
     if (state == null) {
       throw TonContractException(
