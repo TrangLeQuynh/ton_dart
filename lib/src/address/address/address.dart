@@ -113,4 +113,13 @@ class TonAddress implements TonBaseAddress {
 
   @override
   int get hashCode => Object.hash(hash, workChain);
+
+  static isValid(String address) {
+    try {
+      TonAddress a = TonAddress(address);
+      return true;
+    } catch(e) {
+      return false;
+    }
+  }
 }
