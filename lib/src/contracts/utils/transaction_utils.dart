@@ -27,13 +27,6 @@ class TransactioUtils {
         init: initState);
   }
 
-  static Cell buildMessageBody(String? memo) {
-    if (memo != null) {
-      return beginCell().storeUint(0, 32).storeStringTail(memo).endCell();
-    }
-    return Cell.empty;
-  }
-
   static Cell createV4(
       {required int subWalletId,
       required List<MessageRelaxed> messages,

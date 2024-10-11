@@ -2,6 +2,8 @@ import 'package:ton_dart/src/address/address/address.dart';
 import 'package:ton_dart/src/boc/boc.dart';
 import 'package:ton_dart/src/contracts/exception/exception.dart';
 import 'package:ton_dart/src/crypto/keypair/private_key.dart';
+import 'package:ton_dart/src/helper/ton_helper.dart';
+import 'package:ton_dart/src/models/models.dart';
 import 'package:ton_dart/src/models/models/common_message_info.dart';
 import 'package:ton_dart/src/models/models/common_message_info_relaxed.dart';
 import 'package:ton_dart/src/models/models/currency_collection.dart';
@@ -19,6 +21,7 @@ mixin VersionedWalletTransactionImpl on VersonedWalletContract {
     Cell? body,
     bool? bounce,
     bool bounced = false,
+    StateInit? init,
   }) {
     assert(memo == null || body == null,
         "You have to choose a memo or body for each message.");
@@ -33,7 +36,8 @@ mixin VersionedWalletTransactionImpl on VersonedWalletContract {
           forwardFee: BigInt.zero,
           createdLt: BigInt.zero,
           createdAt: 0),
-      body: body ?? TransactioUtils.buildMessageBody(memo),
+      body: body ?? TonHelper.buildMessageBody(memo),
+      init: init,
     );
   }
 
