@@ -1,6 +1,7 @@
 class TonCenterMethods {
   final String name;
-  static const String tonCenterV2BaseUrl = "/api/v2/jsonRPC";
+  // static const String tonCenterV2BaseUrl = "/api/v2/jsonRPC";
+  static const String tonCenterV2BaseUrl = "";
   String get baseUrl => tonCenterV2BaseUrl;
 
   const TonCenterMethods._(this.name);

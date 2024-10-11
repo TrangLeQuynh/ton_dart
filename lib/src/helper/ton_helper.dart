@@ -39,4 +39,22 @@ class TonHelper {
     }
     return toCell;
   }
+
+  static Cell buildMessageBody(String? memo) {
+    if (memo != null) {
+      return beginCell().storeUint(0, 32).storeStringTail(memo).endCell();
+    }
+    return Cell.empty;
+  }
+
+  static String? decodeMessage(String? data) {
+    try {
+      Cell payload = toCell(data);
+      final slice = payload.beginParse();
+      slice.loadUint(32);
+      return BocUtils.readString(slice);
+    } catch(e) {
+      return null;
+    }
+  }
 }
