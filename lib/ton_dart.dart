@@ -11,3 +11,5 @@ export 'src/provider/provider.dart';
 export 'src/models/models.dart';
 export 'src/utils/fee.dart';
 export 'src/contracts/models/account_state.dart';
+
+export 'src/models/tx_requests/sign_raw_message.dart';
