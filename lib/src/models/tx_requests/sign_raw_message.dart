@@ -23,8 +23,8 @@ class SignRawMessage {
     return SignRawMessage(
       address: json['address'],
       amount: BigInt.parse(json['amount'].toString()),
-      payload: json['payload'] ?? '',
-      stateInit: json['stateInit'] ?? [],
+      payload: json['payload'],
+      stateInit: json['stateInit'],
     );
   }
 
