@@ -35,7 +35,7 @@ mixin ContractProvider on TonWallets {
       throw RPCError(
           message: "Run method failed with exit code ${response.exitCode}",
           errorCode: response.exitCode,
-          data: null,
+          details: null,
           request: {
             "method": method,
             "address": address?.toString() ?? this.address.toString(),

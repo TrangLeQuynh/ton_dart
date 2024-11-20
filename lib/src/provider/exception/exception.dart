@@ -6,7 +6,7 @@ class TonApiError extends RPCError {
       : super(
             message: message,
             errorCode: code ?? -1,
-            data: null,
+            details: null,
             request: request);
   @override
   String toString() {
