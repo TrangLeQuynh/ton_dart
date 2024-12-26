@@ -6,6 +6,7 @@ import 'package:ton_dart/src/contracts/highload/core/core.dart';
 import 'package:ton_dart/src/contracts/highload/models/v3_account_params.dart';
 import 'package:ton_dart/src/crypto/keypair/private_key.dart';
 import 'package:ton_dart/src/models/models.dart';
+import 'package:ton_dart/src/models/tx_requests/tx_response.dart';
 import 'package:ton_dart/src/provider/provider.dart';
 import 'package:ton_dart/src/contracts/highload/constant/constant.dart';
 import 'package:ton_dart/src/contracts/highload/provider/v3.dart';
@@ -129,7 +130,7 @@ class HighloadWalletV3 extends HighloadWallets
         state: initState);
   }
 
-  Future<String> sendBatchTransaction(
+  Future<TxResponse> sendBatchTransaction(
       {required TonPrivateKey signer,
       required List<OutActionSendMsg> messages,
       required BigInt queryId,

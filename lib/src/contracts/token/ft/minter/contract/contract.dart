@@ -7,6 +7,7 @@ import 'package:ton_dart/src/contracts/token/ft/minter/models/minter_wallet_para
 import 'package:ton_dart/src/contracts/token/metadata/metadata.dart';
 import 'package:ton_dart/src/crypto/keypair/private_key.dart';
 import 'package:ton_dart/src/models/models.dart';
+import 'package:ton_dart/src/models/tx_requests/tx_response.dart';
 import 'package:ton_dart/src/provider/provider.dart';
 import 'package:ton_dart/src/provider/provider/provider.dart';
 import 'package:ton_dart/src/tuple/tuple.dart';
@@ -50,7 +51,7 @@ class JettonMinter extends TonContract<MinterWalletParams>
         metadata: params.metadata);
   }
 
-  Future<String> _sendTransaction(
+  Future<TxResponse> _sendTransaction(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -81,7 +82,7 @@ class JettonMinter extends TonContract<MinterWalletParams>
         onEstimateFee: onEstimateFee);
   }
 
-  Future<String> deploy(
+  Future<TxResponse> deploy(
       {required TonPrivateKey ownerPrivateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -114,7 +115,7 @@ class JettonMinter extends TonContract<MinterWalletParams>
         onEstimateFee: onEstimateFee);
   }
 
-  Future<String> mint(
+  Future<TxResponse> mint(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt jettonAmout,
@@ -156,7 +157,7 @@ class JettonMinter extends TonContract<MinterWalletParams>
         onEstimateFee: onEstimateFee);
   }
 
-  Future<String> discover(
+  Future<TxResponse> discover(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -181,7 +182,7 @@ class JettonMinter extends TonContract<MinterWalletParams>
         timeout: timeout);
   }
 
-  Future<String> changeAdmin(
+  Future<TxResponse> changeAdmin(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -205,7 +206,7 @@ class JettonMinter extends TonContract<MinterWalletParams>
         onEstimateFee: onEstimateFee);
   }
 
-  Future<String> changeContent(
+  Future<TxResponse> changeContent(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt amount,

@@ -6,6 +6,7 @@ import 'package:ton_dart/src/contracts/models/account_state.dart';
 import 'package:ton_dart/src/contracts/models/run_method_response.dart';
 import 'package:ton_dart/src/helper/ton_helper.dart';
 import 'package:ton_dart/src/models/models.dart';
+import 'package:ton_dart/src/models/tx_requests/tx_response.dart';
 import 'package:ton_dart/src/provider/provider.dart';
 
 mixin ContractProvider on TonWallets {
@@ -81,17 +82,22 @@ mixin ContractProvider on TonWallets {
     return getStaticState(rpc: rpc, address: address);
   }
 
-  Future<String> sendMessage(
+  Future<TxResponse> sendMessage(
       {required TonProvider rpc, required Message exMessage}) async {
     final boc = exMessage.serialize();
+    final bocBase64 = boc.toBase64();
     if (rpc.isTonCenter) {
       await rpc.request(TonCenterSendBocReturnHash(boc.toBase64()));
     } else {
-      await rpc
+      dynamic res = await rpc
           .request(TonApiSendBlockchainMessage(batch: [], boc: boc.toBase64()));
     }
 
-    return StringUtils.decode(boc.hash(), type: StringEncoding.base64);
+    return TxResponse(
+      boc: bocBase64,
+      hash: StringUtils.decode(boc.hash(), type: StringEncoding.base64),
+    );
+    // return StringUtils.decode(boc.hash(), type: StringEncoding.base64);
   }
 
   Future<bool> isActive(TonProvider rpc) async {
