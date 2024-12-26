@@ -8,6 +8,7 @@ import 'package:ton_dart/src/contracts/utils/transaction_utils.dart';
 import 'package:ton_dart/src/contracts/wallet/core/versioned_wallet.dart';
 import 'package:ton_dart/src/crypto/keypair/private_key.dart';
 import 'package:ton_dart/src/models/models.dart';
+import 'package:ton_dart/src/models/tx_requests/tx_response.dart';
 import 'package:ton_dart/src/provider/provider.dart';
 import 'nft_collection.dart';
 
@@ -46,7 +47,7 @@ class NFTCollectionEditableContract extends NFTCollectionContract {
     return params.serialize(workchain: workchain);
   }
 
-  Future<String> _sendTransaction(
+  Future<TxResponse> _sendTransaction(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -73,7 +74,7 @@ class NFTCollectionEditableContract extends NFTCollectionContract {
         sendMode: sendMode);
   }
 
-  Future<String> changeContent(
+  Future<TxResponse> changeContent(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt amount,

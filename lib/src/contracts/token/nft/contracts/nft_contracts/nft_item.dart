@@ -6,6 +6,7 @@ import 'package:ton_dart/src/contracts/exception/exception.dart';
 import 'package:ton_dart/src/contracts/token/nft/constant/constant.dart';
 import 'package:ton_dart/src/crypto/crypto.dart';
 import 'package:ton_dart/src/models/models.dart';
+import 'package:ton_dart/src/models/tx_requests/tx_response.dart';
 import 'package:ton_dart/src/provider/provider/provider.dart';
 
 /// https://github.com/ton-blockchain/TEPs/blob/master/text/0062-nft-standard.md
@@ -49,7 +50,7 @@ class NFTItemContract extends TonContract<NFTItemParams> {
     return params.serialize();
   }
 
-  Future<String> _sendTransaction(
+  Future<TxResponse> _sendTransaction(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -77,7 +78,7 @@ class NFTItemContract extends TonContract<NFTItemParams> {
   }
 
   /// https://github.com/ton-blockchain/TEPs/blob/master/text/0062-nft-standard.md#1-transfer
-  Future<String> transfer(
+  Future<TxResponse> transfer(
       {required TonPrivateKey ownerPrivateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -106,7 +107,7 @@ class NFTItemContract extends TonContract<NFTItemParams> {
         timeout: timeout);
   }
 
-  Future<String> deploy(
+  Future<TxResponse> deploy(
       {required TonPrivateKey ownerPrivateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -138,7 +139,7 @@ class NFTItemContract extends TonContract<NFTItemParams> {
   }
 
   /// https://github.com/ton-blockchain/TEPs/blob/master/text/0062-nft-standard.md#2-get_static_data
-  Future<String> getStaticData(
+  Future<TxResponse> getStaticData(
       {required TonPrivateKey ownerPrivateKey,
       required TonProvider rpc,
       required BigInt amount,

@@ -9,6 +9,7 @@ import 'package:ton_dart/src/crypto/keypair/private_key.dart';
 import 'package:ton_dart/src/models/models/message.dart';
 import 'package:ton_dart/src/models/models/message_relaxed.dart';
 import 'package:ton_dart/src/models/models/send_mode.dart';
+import 'package:ton_dart/src/models/tx_requests/tx_response.dart';
 import 'package:ton_dart/src/provider/provider.dart';
 
 typedef OnEstimateFee = Future<void> Function(Message message);
@@ -17,7 +18,7 @@ abstract class VersonedWalletContract
     extends TonContract<VersionedWalletAccountPrams> {
   const VersonedWalletContract();
   abstract final WalletVersion type;
-  Future<String> sendTransfer(
+  Future<TxResponse> sendTransfer(
       {required List<MessageRelaxed> messages,
       required TonPrivateKey privateKey,
       required TonProvider rpc,

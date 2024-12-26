@@ -11,6 +11,7 @@ import 'package:ton_dart/src/contracts/utils/transaction_utils.dart';
 import 'package:ton_dart/src/contracts/wallet/core/versioned_wallet.dart';
 import 'package:ton_dart/src/crypto/keypair/private_key.dart';
 import 'package:ton_dart/src/models/models.dart';
+import 'package:ton_dart/src/models/tx_requests/tx_response.dart';
 import 'package:ton_dart/src/provider/provider.dart';
 import 'package:ton_dart/src/provider/provider/provider.dart';
 
@@ -54,7 +55,7 @@ class NFTCollectionContract extends TonContract<NftCollectionParams> {
     return params.serialize(workchain: workchain);
   }
 
-  Future<String> _sendTransaction(
+  Future<TxResponse> _sendTransaction(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -81,7 +82,7 @@ class NFTCollectionContract extends TonContract<NftCollectionParams> {
         sendMode: sendMode);
   }
 
-  Future<String> deploy(
+  Future<TxResponse> deploy(
       {required TonPrivateKey ownerPrivateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -112,7 +113,7 @@ class NFTCollectionContract extends TonContract<NftCollectionParams> {
         timeout: timeout);
   }
 
-  Future<String> mintNft(
+  Future<TxResponse> mintNft(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -143,7 +144,7 @@ class NFTCollectionContract extends TonContract<NftCollectionParams> {
         timeout: timeout);
   }
 
-  Future<String> batchMintNfts(
+  Future<TxResponse> batchMintNfts(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -174,7 +175,7 @@ class NFTCollectionContract extends TonContract<NftCollectionParams> {
         timeout: timeout);
   }
 
-  Future<String> changeOwner(
+  Future<TxResponse> changeOwner(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt amount,

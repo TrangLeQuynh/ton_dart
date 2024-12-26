@@ -6,6 +6,7 @@ import 'package:ton_dart/src/contracts/exception/exception.dart';
 import 'package:ton_dart/src/contracts/token/ft/wallet/models/jetton_transfer_params.dart';
 import 'package:ton_dart/src/crypto/keypair/private_key.dart';
 import 'package:ton_dart/src/models/models.dart';
+import 'package:ton_dart/src/models/tx_requests/tx_response.dart';
 import 'package:ton_dart/src/provider/provider.dart';
 import 'package:ton_dart/src/contracts/wallet/core/versioned_wallet.dart';
 import 'package:ton_dart/src/contracts/token/ft/wallet/constants/contants.dart';
@@ -42,7 +43,7 @@ class JettonWallet extends TonContract {
     return beginCell().endCell();
   }
 
-  Future<String> _sendTransaction(
+  Future<TxResponse> _sendTransaction(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -70,7 +71,7 @@ class JettonWallet extends TonContract {
         onEstimateFee: onEstimateFees);
   }
 
-  Future<String> deploy(
+  Future<TxResponse> deploy(
       {required TonPrivateKey ownerPrivateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -134,7 +135,7 @@ class JettonWallet extends TonContract {
     return beginCell().storeUint(0x6d8e5e3c, 32).storeUint(0, 64).endCell();
   }
 
-  Future<String> transfer(
+  Future<TxResponse> transfer(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required TonAddress destination,
@@ -168,7 +169,7 @@ class JettonWallet extends TonContract {
         onEstimateFees: onEstimateFees);
   }
 
-  Future<String> multipleTransfer(
+  Future<TxResponse> multipleTransfer(
       {required List<JettonTransferParams> transfers,
       required TonPrivateKey signerKey,
       required TonProvider rpc,
@@ -197,7 +198,7 @@ class JettonWallet extends TonContract {
         onEstimateFee: onEstimateFees);
   }
 
-  Future<String> burn(
+  Future<TxResponse> burn(
       {required TonPrivateKey privateKey,
       required TonProvider rpc,
       required BigInt burnJettonAmount,
@@ -225,7 +226,7 @@ class JettonWallet extends TonContract {
         onEstimateFees: onEstimateFees);
   }
 
-  Future<String> withdrawTons({
+  Future<TxResponse> withdrawTons({
     required TonPrivateKey privateKey,
     required TonProvider rpc,
     required BigInt amount,
@@ -249,7 +250,7 @@ class JettonWallet extends TonContract {
         onEstimateFees: onEstimateFees);
   }
 
-  Future<String> withdrawJettons({
+  Future<TxResponse> withdrawJettons({
     required TonPrivateKey privateKey,
     required TonProvider rpc,
     required BigInt withdrawAmount,

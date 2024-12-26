@@ -7,6 +7,7 @@ import 'package:ton_dart/src/contracts/wallet/models/versioned_wallet_account_pa
 import 'package:ton_dart/src/crypto/keypair/private_key.dart';
 import 'package:ton_dart/src/models/models/message_relaxed.dart';
 import 'package:ton_dart/src/models/models/send_mode.dart';
+import 'package:ton_dart/src/models/tx_requests/tx_response.dart';
 import 'package:ton_dart/src/provider/provider.dart';
 import 'package:ton_dart/src/contracts/wallet/utils/utils.dart';
 import 'package:ton_dart/src/contracts/wallet/transaction/transaction_impl.dart';
@@ -38,7 +39,7 @@ mixin VerionedProviderImpl on VersionedWalletTransactionImpl {
   }
 
   @override
-  Future<String> sendTransfer(
+  Future<TxResponse> sendTransfer(
       {required List<MessageRelaxed> messages,
       required TonPrivateKey privateKey,
       required TonProvider rpc,
@@ -61,7 +62,7 @@ mixin VerionedProviderImpl on VersionedWalletTransactionImpl {
     return sendMessage(rpc: rpc, exMessage: exMessage);
   }
 
-  Future<String> deploy(
+  Future<TxResponse> deploy(
       {required TonPrivateKey ownerPrivateKey,
       required TonProvider rpc,
       required BigInt amount,
@@ -72,8 +73,7 @@ mixin VerionedProviderImpl on VersionedWalletTransactionImpl {
       Cell? body}) async {
     final stateData = await readState(rpc);
     if (stateData.seqno != 0) {
-      // throw TonContractException("Account is already active.");
-      return 'Account is already active.';
+      throw TonContractDeployedException("Account is already active.");
     }
     if (state == null) {
       throw TonContractException(
