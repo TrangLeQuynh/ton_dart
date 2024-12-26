@@ -109,7 +109,9 @@ class TransactioUtils {
             messages: messages,
             accountSeqno: accountSeqno,
             type: type,
-            sendMode: sendMode);
+            sendMode: sendMode,
+            timeout: timeOut,
+        );
       case WalletVersion.v1R1:
       case WalletVersion.v1R2:
       case WalletVersion.v1R3:

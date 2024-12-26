@@ -89,7 +89,7 @@ mixin ContractProvider on TonWallets {
     if (rpc.isTonCenter) {
       await rpc.request(TonCenterSendBocReturnHash(boc.toBase64()));
     } else {
-      dynamic res = await rpc
+      await rpc
           .request(TonApiSendBlockchainMessage(batch: [], boc: boc.toBase64()));
     }
 
