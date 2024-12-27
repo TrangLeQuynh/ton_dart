@@ -4,6 +4,7 @@ import 'package:ton_dart/src/contracts/contracts.dart';
 import 'package:ton_dart/src/helper/ton_helper.dart';
 import 'package:ton_dart/src/models/models.dart';
 import 'package:ton_dart/src/provider/provider/provider.dart';
+import 'package:ton_dart/src/exception/exception.dart';
 
 /// https://github.com/ton-blockchain/TEPs/blob/master/text/0062-nft-standard.md
 class NFTItemContract<E extends WalletContractTransferParams>

@@ -1,4 +1,4 @@
-import 'package:ton_dart/src/contracts/exception/exception.dart';
+import 'package:ton_dart/src/exception/exception.dart';
 
 class _HighloadQueryIdConst {
   static const int bitNumberSize = 10; // 10 bit

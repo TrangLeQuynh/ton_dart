@@ -1,7 +1,7 @@
 import 'package:blockchain_utils/exception/rpc_error.dart';
 import 'package:blockchain_utils/utils/utils.dart';
 import 'package:ton_dart/src/address/address.dart';
-import 'package:ton_dart/src/contracts/exception/exception.dart';
+import 'package:ton_dart/src/exception/exception.dart';
 import 'package:ton_dart/src/contracts/wallet_contracts/provider/models/account_state.dart';
 import 'package:ton_dart/src/contracts/wallet_contracts/provider/models/run_method_response.dart';
 import 'package:ton_dart/src/helper/ton_helper.dart';

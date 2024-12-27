@@ -1,7 +1,7 @@
 import 'package:ton_dart/src/address/address/address.dart';
 import 'package:ton_dart/src/boc/boc.dart';
 import 'package:ton_dart/src/contracts/core/core.dart';
-import 'package:ton_dart/src/contracts/exception/exception.dart';
+import 'package:ton_dart/src/exception/exception.dart';
 import 'package:ton_dart/src/contracts/wallet_contracts/core/versioned/versioned_wallet.dart';
 import 'package:ton_dart/src/contracts/wallet_contracts/types/models/v5_client_id.dart';
 import 'package:ton_dart/src/crypto/crypto.dart';

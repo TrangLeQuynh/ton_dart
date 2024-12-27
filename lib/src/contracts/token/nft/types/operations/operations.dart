@@ -2,7 +2,7 @@ import 'package:blockchain_utils/utils/numbers/utils/bigint_utils.dart';
 import 'package:ton_dart/src/address/address.dart';
 import 'package:ton_dart/src/boc/boc.dart';
 import 'package:ton_dart/src/contracts/core/core.dart';
-import 'package:ton_dart/src/contracts/exception/exception.dart';
+import 'package:ton_dart/src/exception/exception.dart';
 import 'package:ton_dart/src/contracts/token/metadata/metadata.dart';
 import 'package:ton_dart/src/contracts/token/nft/constant/constant.dart';
 import 'package:ton_dart/src/contracts/token/nft/types/types.dart';

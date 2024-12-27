@@ -2,7 +2,7 @@ import 'package:ton_dart/src/address/address.dart';
 import 'package:ton_dart/src/address/address/address.dart';
 import 'package:ton_dart/src/boc/boc.dart';
 import 'package:ton_dart/src/contracts/core/core.dart';
-import 'package:ton_dart/src/contracts/exception/exception.dart';
+import 'package:ton_dart/src/exception/exception.dart';
 import 'package:ton_dart/src/contracts/token/ft/contract/contracts.dart';
 import 'package:ton_dart/src/contracts/token/ft/types/types.dart';
 import 'package:ton_dart/src/contracts/token/metadata/metadata.dart';
