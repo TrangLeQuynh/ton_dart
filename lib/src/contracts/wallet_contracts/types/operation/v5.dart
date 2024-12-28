@@ -5,6 +5,7 @@ import 'package:ton_dart/src/contracts/utils/parser.dart';
 import 'package:ton_dart/src/models/models.dart';
 import 'package:ton_dart/src/serialization/serialization.dart';
 import 'package:ton_dart/src/utils/utils/extensions.dart';
+import 'package:ton_dart/src/exception/exception.dart';
 
 class VersionedWalletV5OperaionType extends ContractOperationType {
   const VersionedWalletV5OperaionType._(

@@ -4,12 +4,12 @@ class TonContractExceptionConst {
   static const TonContractException stateIsInactive = TonContractException(
       "Unable to read contract data. The contract is not active.");
   static TonContractException unknownBody(String name,
-          {String? message, String? trace}) =>
+      {String? message, String? trace}) =>
       TonContractException("Unknown $name operation body",
           details: {"message": message, "trace": trace}
             ..removeWhere((k, v) => v == null));
   static TonContractException invalidJson(String name,
-          {String? message, String? trace, Map? data}) =>
+      {String? message, String? trace, Map? data}) =>
       TonContractException("Provided json is not valid for $name",
           details: {"message": message, "trace": trace, "data": data}
             ..removeWhere((k, v) => v == null));
@@ -17,12 +17,18 @@ class TonContractExceptionConst {
       TonContractException("Unknow or unsupported operation.",
           details: {"tag": tag});
   static TonContractException incorrectOperation(
-          {required String excepted, required String got}) =>
+      {required String excepted, required String got}) =>
       TonContractException("Incorrect operation.",
           details: {"excepted": excepted, "got": got});
 }
 
 class TonContractException extends TonDartPluginException {
   const TonContractException(String message, {Map<String, dynamic>? details})
+      : super(message, details: details);
+}
+
+// Account is already active
+class TonContractDeployedException extends TonDartPluginException {
+  const TonContractDeployedException({ String message = "Account is already active.", Map<String, dynamic>? details })
       : super(message, details: details);
 }

@@ -1,6 +1,6 @@
 import 'package:ton_dart/src/boc/boc.dart';
 import 'package:ton_dart/src/contracts/core/core/transfer_params.dart';
-import 'package:ton_dart/src/contracts/exception/exception.dart';
+import 'package:ton_dart/src/exception/exception.dart';
 import 'package:ton_dart/src/contracts/utils/serialization_utils.dart';
 import 'package:ton_dart/src/contracts/wallet_contracts/core/core.dart';
 import 'package:ton_dart/src/contracts/wallet_contracts/types/transfer_params/versioned.dart';

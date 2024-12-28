@@ -2,6 +2,7 @@ import 'package:ton_dart/src/boc/boc.dart';
 import 'package:ton_dart/src/contracts/contracts.dart';
 import 'package:ton_dart/src/models/models.dart';
 import 'package:ton_dart/src/utils/utils.dart';
+import 'package:ton_dart/src/exception/exception.dart';
 
 abstract class VersionedWalletTransaction {}
 

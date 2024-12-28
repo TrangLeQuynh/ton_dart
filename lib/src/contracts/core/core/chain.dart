@@ -1,4 +1,4 @@
-import 'package:ton_dart/src/contracts/exception/exception.dart';
+import 'package:ton_dart/src/exception/exception.dart';
 
 /// Represents a TON (The Open Network) blockchain network and its associated parameters.
 ///
