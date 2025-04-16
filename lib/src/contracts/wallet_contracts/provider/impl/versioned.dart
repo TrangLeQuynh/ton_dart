@@ -58,14 +58,13 @@ mixin VerionedProviderImpl<C extends VersionedWalletState,
     return stateData;
   }
 
-  @override
-  Future<String> sendTransfer(
-      {required TRANSFERPARAMS params,
-      required TonProvider rpc,
-      List<MessageRelaxed> messages = const [],
-      int sendMode = SendModeConst.payGasSeparately,
-      int? timeout,
-      OnEstimateFee? onEstimateFee}) async {
+  Future<Message> createMessage({
+    required TRANSFERPARAMS params,
+    required TonProvider rpc,
+    List<MessageRelaxed> messages = const [],
+    int sendMode = SendModeConst.payGasSeparately,
+    int? timeout,
+  }) async {
     if (params is! VersionedTransferParams) {
       throw TonContractException('Invalid transaction params', details: {
         'expected': 'VersionedTransferParams',
@@ -96,6 +95,54 @@ mixin VerionedProviderImpl<C extends VersionedWalletState,
         info:
             CommonMessageInfoExternalIn(dest: address, importFee: BigInt.zero),
         body: body);
+    return ext;
+  }
+
+  @override
+  Future<String> sendTransfer(
+      {required TRANSFERPARAMS params,
+      required TonProvider rpc,
+      List<MessageRelaxed> messages = const [],
+      int sendMode = SendModeConst.payGasSeparately,
+      int? timeout,
+      OnEstimateFee? onEstimateFee}) async {
+    // if (params is! VersionedTransferParams) {
+    //   throw TonContractException('Invalid transaction params', details: {
+    //     'expected': 'VersionedTransferParams',
+    //     'got': '${params.runtimeType}'
+    //   });
+    // }
+    // final VersionedWalletState? state = await getContractState(rpc);
+    // if (this.state == null && state == null) {
+    //   throw const TonContractException(
+    //       'cannot send transaction with watch only wallet');
+    // }
+    // final List<OutActionSendMsg> actions = [
+    //   ...messages.map((e) => OutActionSendMsg(mode: sendMode, outMessage: e)),
+    //   ...params.messages
+    // ];
+
+    // final message = TonSerializationUtils.serializeMessage(
+    //     actions: actions,
+    //     state: state ?? this.state!,
+    //     seqno: state?.seqno ?? 0,
+    //     timeOut: timeout);
+    // final body = beginCell()
+    //     .storeBuffer(params.privateKey.sign(message.hash()))
+    //     .storeSlice(message.beginParse())
+    //     .endCell();
+    // final ext = Message(
+    //     init: (state == null ? this.state!.initialState() : null),
+    //     info:
+    //         CommonMessageInfoExternalIn(dest: address, importFee: BigInt.zero),
+    //     body: body);
+    final ext = await createMessage(
+      params: params, 
+      rpc: rpc, 
+      messages: messages, 
+      sendMode: sendMode, 
+      timeout: timeout
+    );
     if (onEstimateFee != null) {
       await onEstimateFee(ext);
     }

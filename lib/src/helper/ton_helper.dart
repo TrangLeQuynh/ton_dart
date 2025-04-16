@@ -43,11 +43,8 @@ class TonHelper {
   /// Returns the parsed [Cell] if successful, or `null` if the data is invalid or parsing fails.
   static Cell? tryToCell(String? data) {
     try {
-      if (data?.trim().isEmpty ?? true) return null;
-      if (StringUtils.isHexBytes(data!)) {
-        return Cell.fromHex(data);
-      }
-      return Cell.fromBase64(data);
+      final value = toCell(data!);
+      return value;
     } catch (e) {
       return null;
     }
@@ -60,12 +57,13 @@ class TonHelper {
   /// Returns the parsed [Cell].
   /// Throws a [TonDartPluginException] if the data is invalid or cannot be parsed.
   static Cell toCell(String? data) {
-    final toCell = tryToCell(data);
-    if (toCell == null) {
-      throw TonDartPluginException('Invalid cell data.',
-          details: {'data': data});
+    if (data == null || data.trim().isEmpty) {
+      throw const TonDartPluginException('Invalid cell data');
     }
-    return toCell;
+    if (StringUtils.isHexBytes(data)) {
+      return Cell.fromHex(data);
+    }
+    return Cell.fromBase64(data);
   }
 
   static MessageRelaxed internal(
@@ -89,7 +87,7 @@ class TonHelper {
             forwardFee: BigInt.zero,
             createdLt: BigInt.zero,
             createdAt: 0),
-        body: body ?? Cell.empty,
+        body: body ?? TonHelper.buildMessageBody(memo),
         init: initState);
   }
 

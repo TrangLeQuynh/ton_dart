@@ -109,7 +109,8 @@ mixin ContractProvider {
       await rpc
           .request(TonApiSendBlockchainMessage(batch: [], boc: boc.toBase64()));
     }
-    return StringUtils.decode(boc.hash(), type: StringEncoding.base64);
+    // return StringUtils.decode(boc.hash(), type: StringEncoding.base64);
+    return BytesUtils.toHexString(boc.hash());
   }
 
   /// check if contract is initialized.

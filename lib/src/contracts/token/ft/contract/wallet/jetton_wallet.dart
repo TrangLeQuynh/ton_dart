@@ -29,10 +29,12 @@ class JettonWallet<E extends WalletContractTransferParams>
           {required TonAddress address,
           required WalletContract<ContractState, E> owner,
           required TonProvider rpc}) async {
-    final stateData =
-        await ContractProvider.getActiveState(rpc: rpc, address: address);
-    final state = JettonWalletState.deserialize(stateData.data!.beginParse());
-    return JettonWallet(owner: owner, state: state, address: address);
+    //// not use read state
+    // final stateData =
+    //     await ContractProvider.getActiveState(rpc: rpc, address: address);
+    // final state = JettonWalletState.deserialize(stateData.data!.beginParse());
+    // return JettonWallet(owner: owner, state: state, address: address);
+    return JettonWallet(owner: owner, state: null, address: address);
   }
 
   Future<String> _sendTransaction(
@@ -119,10 +121,11 @@ class JettonWallet<E extends WalletContractTransferParams>
     return data.reader().readAddress();
   }
 
-  /// read current contract state
-  Future<JettonWalletState> readState(TonProvider rpc) async {
-    final stateData =
-        await ContractProvider.getActiveState(rpc: rpc, address: address);
-    return JettonWalletState.deserialize(stateData.data!.beginParse());
-  }
+  /// read current contract state 
+  /// [ERROR] Need check again to use
+  // Future<JettonWalletState> readState(TonProvider rpc) async {
+  //   final stateData =
+  //       await ContractProvider.getActiveState(rpc: rpc, address: address);
+  //   return JettonWalletState.deserialize(stateData.data!.beginParse());
+  // }
 }
